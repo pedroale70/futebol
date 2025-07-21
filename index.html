@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Driblando aê</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #e0ffe0;
+    }
+
+
+    .pagina {
+      display: none;
+      padding: 20px;
+    }
+
+
+    .ativa {
+      display: block;
+    }
+
+
+    h1 {
+      color: green;
+    }
+
+
+    input, button {
+      display: block;
+      margin: 10px auto;
+      padding: 8px;
+      width: 200px;
+    }
+
+
+    img {
+      width: 100px;
+      display: block;
+      margin: 10px auto;
+    }
+
+
+    .imagens-noticias {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+
+    .imagens-noticias img {
+      width: 200px;
+      height: auto;
+    }
+
+
+    ul {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+
+    table {
+      width: 100%;
+      border: 1px solid black;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+
+    th, td {
+      border: 1px solid black;
+      padding: 6px;
+      text-align: center;
+    }
+
+
+    p {
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+
+
+  <div id="login" class="pagina ativa">
+    <h1>Login Driblando aê</h1>
+    <img src="https://cdn-icons-png.flaticon.com/512/861/861512.png" alt="Bola de Futebol">
+    <input type="text" id="usuario" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Senha">
+    <button onclick="irParaNoticias()">Entrar</button>
+  </div>
+
+
+  <div id="noticias" class="pagina">
+    <h1>Noticias</h1>
+    <div class="imagens-noticias">
+      <img src="https://s2-ge.glbimg.com/jBzaxvO0yYuA69kQsYR-43yZGgc=/0x0:1471x1120/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2024/g/O/xYtST5SWy3xMAEFZKunA/souza-craque.jpeg">
+      <img src="https://www.infomoney.com.br/wp-content/uploads/2025/01/Neymar.jpg?fit=1024%2C683&quality=50&strip=all">
+      <img src="https://s2-ge.glbimg.com/MYI3FSBEXABEMUjfQySjmVXAWY8=/0x0:2592x1728/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2020/J/Y/LH9FlKRGatWrebU37ygw/america-rn-x-abc-13-.jpg">
+    </div>
+    <ul>
+      <li>Neymar pode voltar ao Barcelona</li>
+      <li>Novo técnico da seleção estreia com vitória</li>
+      <li>Palmeiras e Flamengo lideram o campeonato</li>
+      <li>STJD condena Dudu a multa e seis jogos de suspensão por ofensas contra Leila Pereira</li>
+      <li>Arsenal anuncia Madueke, campeão da Copa de Clubes pelo Chelsea; veja valores</li>
+      <li>Coritiba se posiciona após punição à torcida organizada e reforça apoio jurídico</li>
+      <li>Ayrton Lucas e Matheus Gonçalves, do Flamengo, entram no radar de times estrangeiros; ainda não há propostas</li>
+    </ul>
+    <button onclick="irParaJogos()">Ver Próximos Jogos</button>
+    <button onclick="voltarParaLogin()">Sair</button>
+  </div>
+
+
+  <div id="jogos" class="pagina">
+    <h1>Próximos Jogos</h1>
+    <table>
+      <tr>
+        <th>Data</th>
+        <th>Hora</th>
+        <th>Partida</th>
+        <th>Local</th>
+      </tr>
+      <tr>
+        <td>25/07</td>
+        <td>16:00</td>
+        <td>Palmeiras x Flamengo</td>
+        <td>Allianz Parque</td>
+      </tr>
+      <tr>
+        <td>28/07</td>
+        <td>19:30</td>
+        <td>São Paulo x Corinthians</td>
+        <td>Morumbi</td>
+      </tr>
+      <tr>
+        <td>01/08</td>
+        <td>21:00</td>
+        <td>Grêmio x Internacional</td>
+        <td>Arena do Grêmio</td>
+      </tr>
+      <tr>
+        <td>04/08</td>
+        <td>18:00</td>
+        <td>Atlético-MG x Cruzeiro</td>
+        <td>Mineirão</td>
+      </tr>
+      <tr>
+        <td>07/08</td>
+        <td>20:30</td>
+        <td>Bahia x Vitória</td>
+        <td>Arena Fonte Nova</td>
+      </tr>
+      <tr>
+        <td>10/08</td>
+        <td>19:00</td>
+        <td>Fluminense x Botafogo</td>
+        <td>Maracanã</td>
+      </tr>
+      <tr>
+        <td>12/08</td>
+        <td>17:00</td>
+        <td>Santos x Vasco</td>
+        <td>Vila Belmiro</td>
+      </tr>
+    </table>
+
+
+    <h2>História do Futebol</h2>
+    <p>
+     O futebol, como conhecemos hoje, tem suas raízes na Inglaterra do século XIX, embora jogos com características semelhantes tenham existido em várias culturas ao longo da história. A formalização do futebol ocorreu com a criação da Football Association (FA) em 1863, que estabeleceu as primeiras regras unificadas do esporte. O futebol se espalhou pelo mundo, chegando ao Brasil em 1894, trazido por Charles Miller, e se tornou um dos esportes mais populares e amados globalmente.
+    </p>
+
+
+    <button onclick="voltarParaNoticias()">Voltar às Notícias</button>
+  </div>
+
+
+  <script>
+    function mostrar(id) {
+      document.getElementById("login").classList.remove("ativa");
+      document.getElementById("noticias").classList.remove("ativa");
+      document.getElementById("jogos").classList.remove("ativa");
+
+
+      document.getElementById(id).classList.add("ativa");
+    }
+
+
+    function irParaNoticias() {
+      mostrar("noticias");
+    }
+
+
+    function irParaJogos() {
+      mostrar("jogos");
+    }
+
+
+    function voltarParaNoticias() {
+      mostrar("noticias");
+    }
+
+
+    function voltarParaLogin() {
+      mostrar("login");
+    }
+  </script>
+
+
+</body>
+</html>
+
