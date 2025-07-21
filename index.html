@@ -3,217 +3,215 @@
 <head>
   <meta charset="UTF-8">
   <title>Driblando aê</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* Reset e fonte */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background-color: #e0ffe0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8fdf8;
+      color: #333;
+    }
+    header {
+      background-color: #006400;
+      color: #fff;
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 { margin: 0; font-size: 1.5em; }
+    header nav button {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 4px;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    header nav button:hover {
+      background: rgba(255,255,255,0.2);
     }
 
-
-    .pagina {
-      display: none;
-      padding: 20px;
-    }
-
-
-    .ativa {
-      display: block;
-    }
-
-
-    h1 {
-      color: green;
-    }
-
+    .pagina { display: none; padding: 20px; max-width: 900px; margin: auto; }
+    .ativa { display: block; }
 
     input, button {
       display: block;
       margin: 10px auto;
-      padding: 8px;
+      padding: 10px;
       width: 200px;
+      font-size: 1em;
+      border-radius: 4px;
+      border: 1px solid #ccc;
     }
 
-
-    img {
-      width: 100px;
-      display: block;
-      margin: 10px auto;
+    button.primary {
+      background-color: #ff8c00;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
     }
-
+    button.primary:hover {
+      background-color: #e67e00;
+      transform: translateY(-2px);
+    }
 
     .imagens-noticias {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
       margin-bottom: 20px;
     }
-
-
     .imagens-noticias img {
-      width: 200px;
+      width: 100%;
       height: auto;
+      border-radius: 6px;
+      transition: transform 0.3s;
+    }
+    .imagens-noticias img:hover {
+      transform: scale(1.05);
     }
 
-
-    ul {
-      max-width: 600px;
-      margin: 0 auto;
+    ul.noticias {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
+      list-style: none;
+      margin-bottom: 20px;
     }
-
+    ul.noticias li {
+      background: #fff;
+      padding: 12px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    ul.noticias li:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
 
     table {
       width: 100%;
-      border: 1px solid black;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       margin-bottom: 20px;
     }
-
-
-    th, td {
-      border: 1px solid black;
-      padding: 6px;
+    th {
+      background-color: #006400;
+      color: #fff;
+      padding: 12px;
       text-align: center;
     }
-
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+    tr:nth-child(even) {
+      background: #f1fdf1;
+    }
 
     p {
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .imagens-noticias, ul.noticias {
+        grid-template-columns: 1fr;
+      }
+      input, button {
+        width: 90%;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      header nav {
+        margin-top: 8px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <header>
+    <h1>Driblando aê ⚽</h1>
+    <nav>
+      <button onclick="irParaNoticias()">Notícias</button>
+      <button onclick="irParaJogos()">Jogos</button>
+      <button onclick="voltarParaLogin()">Sair</button>
+    </nav>
+  </header>
 
   <div id="login" class="pagina ativa">
     <h1>Login Driblando aê</h1>
-    <img src="https://cdn-icons-png.flaticon.com/512/861/861512.png" alt="Bola de Futebol">
+    <img src="https://cdn-icons-png.flaticon.com/512/861/861512.png" alt="Bola de Futebol" width="120">
     <input type="text" id="usuario" placeholder="Usuário">
     <input type="password" id="senha" placeholder="Senha">
-    <button onclick="irParaNoticias()">Entrar</button>
+    <button class="primary" onclick="irParaNoticias()">Entrar</button>
   </div>
 
-
   <div id="noticias" class="pagina">
-    <h1>Noticias</h1>
+    <h1>Notícias</h1>
     <div class="imagens-noticias">
-      <img src="https://s2-ge.glbimg.com/jBzaxvO0yYuA69kQsYR-43yZGgc=/0x0:1471x1120/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2024/g/O/xYtST5SWy3xMAEFZKunA/souza-craque.jpeg">
-      <img src="https://www.infomoney.com.br/wp-content/uploads/2025/01/Neymar.jpg?fit=1024%2C683&quality=50&strip=all">
-      <img src="https://s2-ge.glbimg.com/MYI3FSBEXABEMUjfQySjmVXAWY8=/0x0:2592x1728/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2020/J/Y/LH9FlKRGatWrebU37ygw/america-rn-x-abc-13-.jpg">
+      <img src="https://s2-ge.glbimg.com/jBzaxvO0yYuA69kQsYR-43yZGgc=/0x0:1471x1120/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2024/g/O/xYtST5SWy3xMAEFZKunA/souza-craque.jpeg" alt="">
+      <img src="https://www.infomoney.com.br/wp-content/uploads/2025/01/Neymar.jpg?fit=1024%2C683&quality=50&strip=all" alt="">
+      <img src="https://s2-ge.glbimg.com/MYI3FSBEXABEMUjfQySjmVXAWY8=/0x0:2592x1728/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2020/J/Y/LH9FlKRGatWrebU37ygw/america-rn-x-abc-13-.jpg" alt="">
     </div>
-    <ul>
+    <ul class="noticias">
       <li>Neymar pode voltar ao Barcelona</li>
       <li>Novo técnico da seleção estreia com vitória</li>
       <li>Palmeiras e Flamengo lideram o campeonato</li>
-      <li>STJD condena Dudu a multa e seis jogos de suspensão por ofensas contra Leila Pereira</li>
-      <li>Arsenal anuncia Madueke, campeão da Copa de Clubes pelo Chelsea; veja valores</li>
-      <li>Coritiba se posiciona após punição à torcida organizada e reforça apoio jurídico</li>
-      <li>Ayrton Lucas e Matheus Gonçalves, do Flamengo, entram no radar de times estrangeiros; ainda não há propostas</li>
+      <li>STJD condena Dudu a multa e seis jogos de suspensão...</li>
+      <li>Arsenal anuncia Madueke, campeão da Copa de Clubes...</li>
+      <li>Coritiba se posiciona após punição à torcida organizada...</li>
+      <li>Ayrton Lucas e Matheus Gonçalves entram no radar...</li>
     </ul>
-    <button onclick="irParaJogos()">Ver Próximos Jogos</button>
-    <button onclick="voltarParaLogin()">Sair</button>
+    <button class="primary" onclick="irParaJogos()">Ver Próximos Jogos</button>
   </div>
-
 
   <div id="jogos" class="pagina">
     <h1>Próximos Jogos</h1>
     <table>
-      <tr>
-        <th>Data</th>
-        <th>Hora</th>
-        <th>Partida</th>
-        <th>Local</th>
-      </tr>
-      <tr>
-        <td>25/07</td>
-        <td>16:00</td>
-        <td>Palmeiras x Flamengo</td>
-        <td>Allianz Parque</td>
-      </tr>
-      <tr>
-        <td>28/07</td>
-        <td>19:30</td>
-        <td>São Paulo x Corinthians</td>
-        <td>Morumbi</td>
-      </tr>
-      <tr>
-        <td>01/08</td>
-        <td>21:00</td>
-        <td>Grêmio x Internacional</td>
-        <td>Arena do Grêmio</td>
-      </tr>
-      <tr>
-        <td>04/08</td>
-        <td>18:00</td>
-        <td>Atlético-MG x Cruzeiro</td>
-        <td>Mineirão</td>
-      </tr>
-      <tr>
-        <td>07/08</td>
-        <td>20:30</td>
-        <td>Bahia x Vitória</td>
-        <td>Arena Fonte Nova</td>
-      </tr>
-      <tr>
-        <td>10/08</td>
-        <td>19:00</td>
-        <td>Fluminense x Botafogo</td>
-        <td>Maracanã</td>
-      </tr>
-      <tr>
-        <td>12/08</td>
-        <td>17:00</td>
-        <td>Santos x Vasco</td>
-        <td>Vila Belmiro</td>
-      </tr>
+      <tr><th>Data</th><th>Hora</th><th>Partida</th><th>Local</th></tr>
+      <tr><td>25/07</td><td>16:00</td><td>Palmeiras x Flamengo</td><td>Allianz Parque</td></tr>
+      <tr><td>28/07</td><td>19:30</td><td>São Paulo x Corinthians</td><td>Morumbi</td></tr>
+      <tr><td>01/08</td><td>21:00</td><td>Grêmio x Internacional</td><td>Arena do Grêmio</td></tr>
+      <tr><td>04/08</td><td>18:00</td><td>Atlético‑MG x Cruzeiro</td><td>Mineirão</td></tr>
+      <tr><td>07/08</td><td>20:30</td><td>Bahia x Vitória</td><td>Arena Fonte Nova</td></tr>
+      <tr><td>10/08</td><td>19:00</td><td>Fluminense x Botafogo</td><td>Maracanã</td></tr>
+      <tr><td>12/08</td><td>17:00</td><td>Santos x Vasco</td><td>Vila Belmiro</td></tr>
     </table>
-
-
     <h2>História do Futebol</h2>
     <p>
-     O futebol, como conhecemos hoje, tem suas raízes na Inglaterra do século XIX, embora jogos com características semelhantes tenham existido em várias culturas ao longo da história. A formalização do futebol ocorreu com a criação da Football Association (FA) em 1863, que estabeleceu as primeiras regras unificadas do esporte. O futebol se espalhou pelo mundo, chegando ao Brasil em 1894, trazido por Charles Miller, e se tornou um dos esportes mais populares e amados globalmente.
+      O futebol, como conhecemos hoje, tem suas raízes na Inglaterra do século XIX...
     </p>
-
-
-    <button onclick="voltarParaNoticias()">Voltar às Notícias</button>
+    <button class="primary" onclick="voltarParaNoticias()">Voltar às Notícias</button>
   </div>
-
 
   <script>
     function mostrar(id) {
-      document.getElementById("login").classList.remove("ativa");
-      document.getElementById("noticias").classList.remove("ativa");
-      document.getElementById("jogos").classList.remove("ativa");
-
-
-      document.getElementById(id).classList.add("ativa");
+      document.querySelectorAll('.pagina').forEach(el => el.classList.remove('ativa'));
+      document.getElementById(id).classList.add('ativa');
     }
-
-
-    function irParaNoticias() {
-      mostrar("noticias");
-    }
-
-
-    function irParaJogos() {
-      mostrar("jogos");
-    }
-
-
-    function voltarParaNoticias() {
-      mostrar("noticias");
-    }
-
-
-    function voltarParaLogin() {
-      mostrar("login");
-    }
+    function irParaNoticias() { mostrar('noticias'); }
+    function irParaJogos() { mostrar('jogos'); }
+    function voltarParaLogin() { mostrar('login'); }
+    function voltarParaNoticias() { mostrar('noticias'); }
   </script>
-
 
 </body>
 </html>
-
